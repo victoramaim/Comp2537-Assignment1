@@ -163,8 +163,10 @@ app.post('/submitUser', async (req,res) => {
 	await userCollection.insertOne({username: username, password: hashedPassword});
 	console.log("Inserted user");
 
-    var html = "successfully created user";
-    res.send(html);
+    req.session.authenticated = true;
+	req.session.username = username;
+	req.session.cookie.maxAge = expireTime;
+    res.redirect('/members');
 });
 
 app.post('/loggingin', async (req,res) => {

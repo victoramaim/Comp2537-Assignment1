@@ -223,9 +223,9 @@ app.get('/members', (req,res) => {
     var title = `<h1>Welcome, ${req.session.username}!</h1>`;
     var picture;
     if (cat == 1) {
-    picture = "<img src='/fluffy.gif'";
+    picture = "<img src='/Lion-cat-cutest-cat.gif'";
     } else if (cat == 2) {
-    picture = "<img src='/socks.gif'";
+    picture = "<img src='/scared.gif'";
     } else if (cat == 3) {
     picture = "<img src='/kitty-cat-sandwich.gif'";
     }

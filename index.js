@@ -219,7 +219,10 @@ app.get('/logout', (req,res) => {
 });
 
 app.get('/members', (req,res) => {
-    var cat = Math.floor(Math.random()*3)+1;
+    if (!req.session.authenticated) {
+        res.redirect('/');
+    } else{
+        var cat = Math.floor(Math.random()*3)+1;
     var title = `<h1>Welcome, ${req.session.username}!</h1>`;
     var picture;
     if (cat == 1) {
@@ -231,6 +234,7 @@ app.get('/members', (req,res) => {
     }
     var logout = `<a href='/logout'>logout</a>`;
     res.send(title + "<br>" + picture + "<br>" + logout);
+    }
 });
 
 app.use(express.static(__dirname + "/public"));
